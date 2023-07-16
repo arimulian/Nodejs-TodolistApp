@@ -1,0 +1,11 @@
+{
+  "name": "todo_cli",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "yargs": "^17.7.2"
+  }
+}
