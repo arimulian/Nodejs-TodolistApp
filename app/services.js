@@ -22,17 +22,12 @@ const listTodo = () => {
   const data = loadData();
   if (data.length > 0) {
     console.log(chalk.blue.bold('List Todo: '));
-    // data.forEach((el, i) => {
-    //   if (el === null) {
-    //     return el
-    //   }
-    //   console.log(`${i + 1}. ${el.todo}`);
-    // });
     data.map((data, i) => {
       if (data == null) {
         return data
       }
-      console.log(`${i + 1}. ${data.todo}`)
+
+      console.log(`${i + 1}. ${data.todo} create by ${data.nama === undefined ? 'User' : data.nama}`)
     })
   } else {
     console.log(chalk.yellow('List Todo is empty'));
@@ -56,18 +51,19 @@ const saveTodo = (nama, todo) => {
 
 
 // NOTE: Fungsi menghapus data todo
-const removeTodo = (index) => {
+const removeTodo = (no) => {
   const data = loadData();
-  for (let i = index; i <= data.length; i++) {
+  for (let i = no; i <= data.length; i++) {
     const element = data[i - 1];
     if (element) {
       data[i - 1] = data[i]
     }
+    data[i] - 1
   }
   const result = data.filter(datas => datas !== data.length)
-  // return result
   const dataPath = 'data/todo.json';
-  const newData = fs.writeFileSync(dataPath, JSON.stringify(result), 'utf-8');
-  return newData;
+  fs.writeFileSync(dataPath, JSON.stringify(result), 'utf-8');
+  console.log(chalk.green.bold.inverse('data deleted successfully'));
+  // return newData;
 }
 export { saveTodo, listTodo, removeTodo };

@@ -33,17 +33,17 @@ yargs(hideBin(process.argv))
   })
   //NOTE: Comand Menhapus Data todo
   .command({
-    command: 'delete',
+    command: 'remove',
     desc: 'Menghapus data todo',
     builder: {
-      index: {
-        desc: 'Index dari data todo',
+      no: {
+        desc: 'nomer urut yang ada pada data todolist',
         demandOption: true,
         type: 'number'
       }
     },
     handler: (argv) => {
-      console.log(removeTodo(argv.index))
+      removeTodo(argv.no)
     }
   })
   .demandCommand()
