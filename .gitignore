@@ -1,4 +1,2 @@
-img/
-node_modules/
-*.log
-*.lock
+./yarn-error.log
+yarn.lock
